@@ -1,0 +1,107 @@
+﻿@model ProjectOpen.Models.ViewModel.TeamSummary
+
+@helper DisplayPrice(string inp)
+{
+    try
+    {
+        Decimal a = Decimal.Parse(inp);
+        @String.Format("{0:C2}", a);
+    }
+    catch (Exception ex)
+    {
+        <span></span>
+    }
+}
+
+@helper DisplayNumber(string inp)
+{
+    try
+    {
+        Decimal a = Decimal.Parse(inp);
+        @String.Format("{0:0.#}", a);
+    }
+    catch (Exception ex)
+    {
+        <span></span>
+    }
+}
+
+@helper DisplayDate(string inp)
+{
+    try
+    {
+        DateTime a = DateTime.Parse(inp);
+        @a.ToString("d");
+    }
+    catch (Exception ex)
+    {
+        <span></span>
+    }
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#">
+                Detail By Team - @Model.Data.Tables[0].Rows[0]["team_name"]
+            </a>
+        </h3>
+    </div>
+
+    <div id="#1" class="panel-collapse">
+        <div class="panel-body">
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Account</th>
+                        <th>Customer</th>
+                        <th>Order</th>
+                        <th>Line</th>
+                        <th>Order Ref</th>
+                        <th>Product</th>
+                        <th>Order Qty</th>
+                        <th>Desp Qty</th>
+                        <th>Stocked</th>
+                        <th>Due</th>
+                        <th>PO</th>
+                        <th>PO Line</th>
+                        <th>Promise Date</th>
+                        <th class="align-center">Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+                        int count = 1;
+                    }
+
+                    @foreach (System.Data.DataRow p in Model.Data.Tables[0].Rows)
+                    {
+                        <tr>
+                            <td>@count</td>
+                            <td>@p[1]</td>
+                            <td>@p[3]</td>
+                            <td>@p[7]</td>
+                            <td>@p[8]</td>
+                            <td>@p[2]</td>
+                            <td>@p[9]</td>
+                            <td>@DisplayNumber(p[11].ToString())</td>
+                            <td>@DisplayNumber(p[12].ToString())</td>
+                            <td>@p[15]</td>
+                            <td>@DisplayDate(p[6].ToString())</td>
+                            <td>@p[16]</td>
+                            <td>@p[17]</td>
+                            <td>@DisplayDate(p[19].ToString())</td>
+
+                            <td class="align-center"><a href="http://web11/intranet/order_enquiry.php?Order=@p[7]" target="_blank"><span class="icol-clipboard-text">&nbsp;</span></a></td>
+                        </tr>
+
+                        count++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div> <!-- /.widget-content -->
+</div> <!-- /.widget .box -->
+

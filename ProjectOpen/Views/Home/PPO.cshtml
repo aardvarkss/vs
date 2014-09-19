@@ -1,0 +1,23 @@
+﻿@model ProjectOpen.Models.ViewModel.TeamSummary
+
+@{
+    ViewBag.Title = "Home";
+}
+
+@Html.Partial("_HeaderBar", Model.Header.Hdr)
+
+<div id="container">
+
+    @Html.Partial("_FixedSideBarNavigation", Model.Header.sbm)
+
+    <div id="content">
+        <div class="container">
+
+            @Html.Partial("_BreadCrumbsLine", Model.Header.brdcrm)
+
+            @Html.Partial("_HeadingLine", Model.Header.hl)
+
+            @Html.Partial("_PPOTeamSummary", Model)
+        </div>
+    </div>
+</div>

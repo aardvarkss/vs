@@ -1,0 +1,48 @@
+﻿@model ProjectOpen.Models.ViewModel.TeamSummary
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#">
+                Held Orders Summary By Team
+            </a>
+        </h3>
+    </div>
+
+    <div id="#1" class="panel-collapse">
+        <div class="panel-body">
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Team Name</th>
+                        <th class="hidden-xs">Orders</th>
+                        <th class="hidden-xs">Lines</th>
+                        <th class="align-center">Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+                        int count = 1;
+                    }
+
+                    @foreach (System.Data.DataRow p in Model.Data.Tables[0].Rows)
+                    {
+                        <tr>
+                            <td>@count</td>
+                            <td>@p[0]</td>
+                            <td>@p[2]</td>
+                            <td class="hidden-xs">@p[3]</td>
+
+                            <td class="align-center"><a href="/Home/HeldOrdersTeam/@p[1]"><span class="icol-clipboard-text">&nbsp;</span></a></td>
+                        </tr>
+
+                        count++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div> <!-- /.widget-content -->
+</div> <!-- /.widget .box -->
+

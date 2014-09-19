@@ -1,0 +1,25 @@
+﻿@model ProjectOpen.Models.Breadcrumbs
+
+<!-- Breadcrumbs line -->
+				<div class="crumbs">
+					<ul id="breadcrumbs" class="breadcrumb">
+						<li>
+							<i class="icol-application-home"></i>
+							<a href="@Model.breadcrumbsLink[0]">@Model.breadcrumbs[0]</a>
+						</li>
+                        @for(int i = 1;i<Model.breadcrumbs.Count;i++)
+                        {
+						    <li 
+                                @if(i == Model.breadcrumbs.Count - 1)
+                                {
+                                    @:class="current"
+                                }
+                                >
+							    <a href="@Model.breadcrumbsLink[i]" title="">@Model.breadcrumbs[i]</a>
+						    </li>
+                        }
+					</ul>
+
+					
+				</div>
+                <!-- /Breadcrumbs line -->

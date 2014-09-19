@@ -1,0 +1,38 @@
+﻿@model ProjectOpen.Models.ViewModel.TPSummary
+
+									        <div class="panel panel-default">
+										        <div class="panel-heading">
+											        <h3 class="panel-title">
+											            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#@Model.Identifier">
+											            Customer Experience Summary</a>
+											        </h3>
+										        </div>
+                                                
+										        <div id="1" class="panel-collapse collapse">
+											        <div class="panel-body">
+												         <table class="table table-hover table-bordered">
+									        <thead>
+										        <tr>
+											        <th>#</th>
+											        <th>Team Name</th>
+											        <th>Issue</th>
+                                                    <th>Qty</th>
+										        </tr>
+									        </thead>
+									        <tbody>
+                                                @foreach (ProjectOpen.Models.ViewModel.TPSummaryLine p in Model.lines)
+                                                {
+										            <tr>
+											            <td></td>
+											            <td>@p.FieldType</td>
+											            <td class="hidden-xs">@p.FieldCount</td>
+                                                        <td class="align-center"><a href="/Home/@p.TeamName/@p.FieldType"><span class="icol-clipboard-text">&nbsp;</span></a></td>
+										            </tr>
+                                                }
+                                            </tbody>
+								</table>
+                            </div>
+							</div> <!-- /.widget-content -->
+						</div> <!-- /.widget .box -->
+					
+
